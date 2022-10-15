@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center align-items-center" style="margin-top: 12%">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+
+            <form>
+                <div class="form-group">
+
+                    <label for="email">E-mail</label>
+
+                    <input type="email" id="email" class="form-control" [(ngModel)]="email">
+
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
+
+                    <label for="senha">Senha</label>
+
+                    <input type="password" id="senha" class="form-control" [(ngModel)]="senha">
+
+                </div>
+
+                <br><br>
+
+                <button class="btn btn-success" style="width: 100%;" type="submit" (click)="Logar()">Entrar</button>
+                <br><br>
+
+                <a class="card-link" href="/usuario/0" style="margin-left: 26%;" type="submit">Criar nova conta</a>
+
+            </form>
+        </div>
+    </div>
+
+</div>
