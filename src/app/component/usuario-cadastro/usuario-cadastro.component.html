@@ -1,0 +1,41 @@
+<h1>Usuarios</h1>
+<div *ngIf="error" >
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="FecharError()"></button>
+    </div>
+</div>
+
+<form >
+    <input type="hidden" [(ngModel)]="usuario.id" name="id">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Nome</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" required placeholder="Nome"
+            [(ngModel)]="usuario.nome" name="nome">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email"
+            [(ngModel)]="usuario.email" name="email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Login</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Login"
+            [(ngModel)]="usuario.login" name="login">
+    </div>
+    <div class="form-group" *ngIf="!usuario.id">
+        <label for="exampleFormControlInput1">Senha</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Senha"
+            [(ngModel)]="usuario.senha" name="senha">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Roles</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="USER | ADMIN | USER;ADMIN"
+            [(ngModel)]="usuario.roles" name="roles">
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-primary" (click)="upSert()">Salvar</button>
+        <a routerLink="/usuarios" class="btn btn-secondary" routerLinkActive="active">Voltar</a>
+    </div>
+</form>

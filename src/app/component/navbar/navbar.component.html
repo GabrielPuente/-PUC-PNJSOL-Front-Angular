@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a routerLink="/usuarios" routerLinkActive="active" class="nav-link">Usuario
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/jogos" class="nav-link" routerLinkActive="active">Jogos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/produtos" class="nav-link" routerLinkActive="active">Produtos
+                    </a>
+                </li>
+            </ul>
+
+            <h5 *ngIf="usuario?.id">{{usuario.nome}}</h5>
+            
+            <a *ngIf="!usuario?.id" routerLink="/login" class="btn btn-success" routerLinkActive="active">Login</a>
+            <button *ngIf="usuario?.id" routerLink="/login" class="btn btn-success" routerLinkActive="active" (click)="Logout()" >Logout</button>
+        </div>
+    </div>
+</nav>
