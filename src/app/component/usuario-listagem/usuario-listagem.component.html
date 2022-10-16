@@ -1,1 +1,64 @@
-<p>usuario-listagem works!</p>
+<h1>Usuario</h1>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end div-top">
+    <a routerLink="/usuario/0" class="btn btn-success" routerLinkActive="active">Novo</a>
+  </div>
+  
+  <div *ngIf="error" class="error">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      {{error}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="FecharError()"></button>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Login</th>
+        <th scope="col">Regras</th>
+        <th scope="col" class="actions">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.nome}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.login}}</td>
+        <td>{{user.roles}}</td>
+        <td>
+          <a routerLink="/usuario/{{user.id}}" class="btn btn-primary" routerLinkActive="active">Editar</a>
+          <button type="button" class="btn btn-danger" (click)="openPopup(user.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmação de exclusão</h4>
+      </div>
+      <div class="modal-body">
+        <p>Deseja mesmo excluir o item selecionado ?</p>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" 
+        (click)="Remove(userId)">
+        Sim
+        </button>
+        <button type="button" class="btn btn-danger" 
+                (click)="closePopup()">
+          Não
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+ 

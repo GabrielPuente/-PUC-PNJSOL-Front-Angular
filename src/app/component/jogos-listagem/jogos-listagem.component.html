@@ -1,36 +1,40 @@
+<h1>Jogos</h1>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end div-top">
-    <a routerLink="/jogo/0" class="btn btn-success" routerLinkActive="active">Novo</a>
+  <a routerLink="/jogo/0" class="btn btn-success" routerLinkActive="active">Novo</a>
+</div>
+
+<div *ngIf="error" class="error">
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    {{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="FecharError()"></button>
   </div>
+</div>
 
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col" style="width: 500px !important;">Descrição</th>
-        <th scope="col" style="text-align: center;">Valor</th>
-        <th scope="col" style="text-align: center;">Data de lançamento</th>
-        <th scope="col" class="actions">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let jogo of jogos">
-        <td>{{jogo.nome}}</td>
-        <td>{{jogo.descricao}}</td>
-        <td  style="text-align: center;">{{jogo.valor}}</td>
-        <td style="text-align: center;">{{jogo.data_lancamento | date:'d/MM/yyyy':'UTC'}}</td>
-        <td>
-          <a routerLink="/jogo/{{jogo.id}}" class="btn btn-primary" routerLinkActive="active">Editar</a>
-          <button type="button" class="btn btn-danger" (click)="openPopup(jogo.id)">Excluir</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col" style="width: 500px !important;">Descrição</th>
+      <th scope="col" style="text-align: center;">Valor</th>
+      <th scope="col" style="text-align: center;">Data de lançamento</th>
+      <th scope="col" class="actions">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games">
+      <td>{{game.nome}}</td>
+      <td>{{game.descricao}}</td>
+      <td style="text-align: center;">{{game.valor}}</td>
+      <td style="text-align: center;">{{game.data_lancamento | date:'dd/MM/yyyy':'UTC'}}</td>
+      <td>
+        <a routerLink="/jogo/{{game.id}}" class="btn btn-primary" routerLinkActive="active">Editar</a>
+        <button type="button" class="btn btn-danger" (click)="openPopup(game.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':displayStyle}">
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -38,19 +42,16 @@
       </div>
       <div class="modal-body">
         <p>Deseja mesmo excluir o item selecionado ?</p>
-  
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" 
-        (click)="Remove(fundId)">
-        Sim
+        <button type="button" class="btn btn-success" (click)="Remove(gameId)">
+          Sim
         </button>
-        <button type="button" class="btn btn-danger" 
-                (click)="closePopup()">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
           Não
         </button>
       </div>
     </div>
   </div>
 </div>
- 

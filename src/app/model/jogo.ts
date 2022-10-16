@@ -1,7 +1,7 @@
-export class jogo {
-  id?: string;
+export class Jogo {
+  id?: number;
   nome?: string;
   descricao?: string;
   valor?: number;
-  dataLancamento?: string;
+  data_lancamento?: Date;
 }
